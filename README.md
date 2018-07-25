@@ -17,12 +17,12 @@ Once you've set your API Key just run `yarn dev`.
 
 ## To Do
 
--[x] Ability to generate a sankey diagram using d3
--[x] Use YNAB data from last month to draw a diagram
--[x] Rudimentary offline support
--[ ] Actual UI For setting Budget Name
--[ ] OAuth support
--[ ] Month selection
--[ ] Better diagrams, deeper more useful
--[ ] "Drill down" into categories
--[ ] Full offline support
+- [x] Ability to generate a sankey diagram using d3
+- [x] Use YNAB data from last month to draw a diagram
+- [x] Rudimentary offline support
+- [ ] Actual UI For setting Budget Name
+- [ ] OAuth support
+- [ ] Month selection
+- [ ] Better diagrams, deeper more useful
+- [ ] "Drill down" into categories
+- [ ] Full offline support
