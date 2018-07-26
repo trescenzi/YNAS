@@ -1,6 +1,6 @@
 import getUserData from './ynab';
 import dayjs from 'dayjs';
-import chart from './chart/chart.vue';
+import app from './app.vue';
 import Vue from 'vue';
 const LAST_MONTH = dayjs().subtract(1, 'month');
 
@@ -59,7 +59,7 @@ getUserData().then(({transactions, accounts, category_groups}) => {
   new Vue({
     el: '#vue',
     render(h) {
-      return h(chart, {
+      return h(app, {
         props: {
           height: this.height,
           width: this.width,
