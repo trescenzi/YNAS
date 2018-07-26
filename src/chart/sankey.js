@@ -47,6 +47,7 @@ export default function ({
   height,
   width,
   selector,
+  ref,
   nodeId = (node) => node.name,
 }) {
   const margin = {top: 10, right: 10, bottom: 10, left: 10};
@@ -59,7 +60,7 @@ export default function ({
   const graph = sdiagram();
   const link = d3.sankeyLinkHorizontal();
 
-  const svg = d3.select("#chart").append("svg")
+  const svg = d3.select(selector || ref).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")

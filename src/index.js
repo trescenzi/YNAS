@@ -1,6 +1,7 @@
-import drawSankey from './chart/sankey';
 import getUserData from './ynab';
 import dayjs from 'dayjs';
+import chart from './chart/chart.vue';
+import Vue from 'vue';
 const LAST_MONTH = dayjs().subtract(1, 'month');
 
 const width = 1400;
@@ -54,13 +55,27 @@ getUserData().then(({transactions, accounts, category_groups}) => {
       return links;
     }, [])
     .map((link) => Object.assign(link, {value: Math.abs(link.value)}))
-  drawSankey({
-    height,
-    width,
-    chart,
-    links,
-    nodes,
+
+  new Vue({
+    el: '#vue',
+    render(h) {
+      return h(chart, {
+        props: {
+          height: this.height,
+          width: this.width,
+          links: this.links,
+          nodes: this.nodes,
+        }
+      });
+    },
+    data: {
+      height,
+      width,
+      links,
+      nodes,
+    }
   });
 }).catch((e) => {
   console.log(e);
 });
+

@@ -15,12 +15,16 @@
     "d3-sankey": "^0.7.1",
     "dayjs": "^1.7.4",
     "plotly": "^1.0.6",
+    "vue-hot-reload-api": "^2.3.0",
     "ynab": "^1.2.0"
   },
   "devDependencies": {
+    "@vue/component-compiler-utils": "^2.1.0",
     "cssnano": "^4.0.3",
     "parcel": "^1.9.7",
-    "parcel-plugin-bundle-visualiser": "^1.1.2"
+    "parcel-plugin-bundle-visualiser": "^1.1.2",
+    "vue": "^2.5.16",
+    "vue-template-compiler": "^2.5.16"
   },
   "browserslist": [
     "last 1 Chrome version"
