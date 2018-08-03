@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html -d public",
+    "build-docker": "parcel build index.html -d /public"
   },
   "dependencies": {
     "d3": "^5.5.0",
