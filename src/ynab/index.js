@@ -1,4 +1,6 @@
 import * as ynab from 'ynab';
+import {getToken, authorize} from './oauth';
+
 const ACCOUNT_TYPES = {
   credit: 'creditCard',
   checking: 'checking',
@@ -7,13 +9,20 @@ const ACCOUNT_TYPES = {
   liability: 'otherLiability',
 }
 
-const ynabAPI = new ynab.api(process.env.YNAB_KEY);
 
 function generateCacheKey(budget) {
   return `NAME:${budget.name};LAST_MODIFIED:${budget.last_modified_on}`;
 }
 
 export default async function getUserData() {
+  const token = getToken();
+  if (!token) {
+    console.log('AUTHORIZING');
+    authorize();
+    return;
+  }
+
+  const ynabAPI = new ynab.api(token);
   try {
     var {data: {budgets}} = await ynabAPI.budgets.getBudgets();
   } catch (e) {
@@ -23,7 +32,7 @@ export default async function getUserData() {
 
     throw new Error(`YNAB API Rejected request:\n${JSON.stringify(e)}`);
   }
-  const budget = budgets.find((b) => b.name === process.env.BUDGET_NAME);
+  const budget = budgets.find((b) => b.name === 'Comprehensive');
   const currentlyCachedBudget = localStorage.getItem('YNAB_CACHE_KEY');
   const currentBudgetCacheKey = generateCacheKey(budget);
   if (currentlyCachedBudget === currentBudgetCacheKey) {
