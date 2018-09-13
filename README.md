@@ -26,3 +26,6 @@ Once you've set your API Key just run `yarn dev`.
 - [ ] Better diagrams, deeper more useful
 - [ ] "Drill down" into categories
 - [ ] Full offline support
+
+
+THIS IS A TEST
